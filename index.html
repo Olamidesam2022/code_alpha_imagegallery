@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Gallery | CodeAlpha Internship</title>
+  <meta name="description" content="A responsive image gallery with collections, hover effects and a lightbox viewer, built with plain HTML, CSS and JavaScript.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-head">
+      <h1>Image gallery</h1>
+      <p class="lead">
+        Twelve illustrations in three collections. Select an image to view it larger,
+        then use the arrow keys or swipe to move through the set.
+      </p>
+    </header>
+
+    <div class="toolbar">
+      <div class="filters" role="group" aria-label="Filter images by collection">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="landscapes" aria-pressed="false">Landscapes</button>
+        <button class="filter" type="button" data-filter="cities" aria-pressed="false">Cities</button>
+        <button class="filter" type="button" data-filter="abstract" aria-pressed="false">Abstract</button>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite">Showing all 12 images</p>
+    </div>
+
+    <!--
+      To use your own photos, copy one <li> block, point href at the large image,
+      src at a smaller version, and set data-category to landscapes, cities or abstract.
+    -->
+    <ul class="grid" id="grid">
+      <li class="item" data-category="landscapes">
+        <a class="tile" href="images/full/dunes.jpg" data-title="Dune sunrise">
+          <img src="images/thumbs/dunes.jpg" width="640" height="427" loading="lazy"
+               alt="Layered sand dunes in orange and brown under a pale sun">
+          <span class="tile-caption"><span class="tile-title">Dune sunrise</span><span class="tile-cat">Landscapes</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="cities">
+        <a class="tile" href="images/full/skyline.jpg" data-title="Night skyline">
+          <img src="images/thumbs/skyline.jpg" width="640" height="427" loading="lazy"
+               alt="City skyline at night with lit windows glowing amber">
+          <span class="tile-caption"><span class="tile-title">Night skyline</span><span class="tile-cat">Cities</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="abstract">
+        <a class="tile" href="images/full/concentric.jpg" data-title="Concentric rings">
+          <img src="images/thumbs/concentric.jpg" width="640" height="640" loading="lazy"
+               alt="Rings of green, amber, terracotta and black on a light background">
+          <span class="tile-caption"><span class="tile-title">Concentric rings</span><span class="tile-cat">Abstract</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="landscapes">
+        <a class="tile" href="images/full/pines.jpg" data-title="Pine forest">
+          <img src="images/thumbs/pines.jpg" width="640" height="960" loading="lazy"
+               alt="Rows of dark green pine trees in front of a large pale sun">
+          <span class="tile-caption"><span class="tile-title">Pine forest</span><span class="tile-cat">Landscapes</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="cities">
+        <a class="tile" href="images/full/towers.jpg" data-title="Tower blocks">
+          <img src="images/thumbs/towers.jpg" width="640" height="960" loading="lazy"
+               alt="Tall grey and green apartment towers with lit windows">
+          <span class="tile-caption"><span class="tile-title">Tower blocks</span><span class="tile-cat">Cities</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="abstract">
+        <a class="tile" href="images/full/waves.jpg" data-title="Colour bands">
+          <img src="images/thumbs/waves.jpg" width="640" height="960" loading="lazy"
+               alt="Wavy horizontal bands from black through green and amber to rust">
+          <span class="tile-caption"><span class="tile-title">Colour bands</span><span class="tile-cat">Abstract</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="landscapes">
+        <a class="tile" href="images/full/valley.jpg" data-title="Green valley">
+          <img src="images/thumbs/valley.jpg" width="640" height="427" loading="lazy"
+               alt="Soft green hills fading into the distance under a pale sun">
+          <span class="tile-caption"><span class="tile-title">Green valley</span><span class="tile-cat">Landscapes</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="cities">
+        <a class="tile" href="images/full/rooftops.jpg" data-title="Evening rooftops">
+          <img src="images/thumbs/rooftops.jpg" width="640" height="427" loading="lazy"
+               alt="Silhouettes of pitched roofs and chimneys against a warm sky">
+          <span class="tile-caption"><span class="tile-title">Evening rooftops</span><span class="tile-cat">Cities</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="abstract">
+        <a class="tile" href="images/full/overlap.jpg" data-title="Overlapping circles">
+          <img src="images/thumbs/overlap.jpg" width="640" height="427" loading="lazy"
+               alt="Three overlapping circles in terracotta, green and amber">
+          <span class="tile-caption"><span class="tile-title">Overlapping circles</span><span class="tile-cat">Abstract</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="landscapes">
+        <a class="tile" href="images/full/salt.jpg" data-title="Salt flats">
+          <img src="images/thumbs/salt.jpg" width="640" height="640" loading="lazy"
+               alt="A rust coloured sun setting over a flat, pale plain">
+          <span class="tile-caption"><span class="tile-title">Salt flats</span><span class="tile-cat">Landscapes</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="cities">
+        <a class="tile" href="images/full/arcade.jpg" data-title="Stone arcade">
+          <img src="images/thumbs/arcade.jpg" width="640" height="427" loading="lazy"
+               alt="A row of four arches in a sandy stone wall">
+          <span class="tile-caption"><span class="tile-title">Stone arcade</span><span class="tile-cat">Cities</span></span>
+        </a>
+      </li>
+
+      <li class="item" data-category="abstract">
+        <a class="tile" href="images/full/dots.jpg" data-title="Dot grid">
+          <img src="images/thumbs/dots.jpg" width="640" height="427" loading="lazy"
+               alt="A grid of amber dots that shrink toward the edges on a black background">
+          <span class="tile-caption"><span class="tile-title">Dot grid</span><span class="tile-cat">Abstract</span></span>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with HTML, CSS and JavaScript.</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+    <div class="lb-inner">
+      <div class="lb-top">
+        <span class="lb-count" id="lb-count"></span>
+        <button class="lb-close" id="lb-close" type="button">Close</button>
+      </div>
+
+      <button class="lb-nav lb-prev" id="lb-prev" type="button" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+
+      <figure class="lb-figure" id="lb-figure">
+        <img id="lb-img" class="is-loading" alt="">
+        <figcaption>
+          <span class="lb-title" id="lb-title"></span>
+          <span class="lb-cat" id="lb-cat"></span>
+        </figcaption>
+      </figure>
+
+      <button class="lb-nav lb-next" id="lb-next" type="button" aria-label="Next image">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
